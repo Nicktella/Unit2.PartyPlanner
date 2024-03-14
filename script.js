@@ -1,76 +1,116 @@
-const API_URL = "https://fsa-crud-2aa9294fe819.herokuapp.com/api/2401-FTB-ET-WEB-AM/events";
+const COHORT = "2401-FTB-ET-WEB-AM";
+const API_URL = "https://fsa-crud-2aa9294fe819.herokuapp.com/api/" + COHORT;
 
 const state = {
     events: [],
+    event: null,
+    guests: [],
+    rsvps: [],
 };
 
-// Declare eventListElement here
-const eventListElement = document.getElementById('eventList');
+const $eventList = document.querySelector("#eventList");
+const $eventDetails = document.querySelector("#eventDetails");
+const $guests = document.querySelector("#guests");
+const $guestList = document.querySelector("#guestList");
 
-// Function to fetch events
+window.addEventListener("hashchange", selectEvent);
+
 async function fetchEvents() {
     try {
-        const response = await fetch(API_URL);
+        const response = await fetch(`${API_URL}/events`);
         const result = await response.json();
 
         if (!result.success) {
             throw new Error(`Invalid response format: ${result}`);
         }
 
-        const events = result.data;
-        console.log('Fetched result:', events);
-        renderEvents(events);
+        state.events = result.data; // Update state with fetched events
+        console.log('Fetched result:', state.events);
+        renderEvents();
     } catch (error) {
         console.error('Error fetching events:', error.message);
     }
 }
 
-// Function to render events
-function renderEvents(events) {
-    // Render each event
-    events.forEach(renderEvent);
+function renderEvents() {
+    const events = state.events.map(renderEvent);
+    $eventList.replaceChildren(...events);
 }
 
-// Function to render a single event
 function renderEvent(event) {
-    if (!event) {
-        console.error('Invalid event data:', event);
-        return;
-    }
+    const article = document.createElement("article");
+    const date = event.date.slice(0, 10);
 
-    const eventElement = document.createElement('div');
-    eventElement.id = `event-${event.id}`;
-    eventElement.classList.add('event-box');
-    eventElement.innerHTML = `
-        <p><strong>Name:</strong> ${event.name}</p>
-        <p><strong>Date:</strong> ${event.date}</p>
-        <p><strong>Location:</strong> ${event.location}</p>
-        <p><strong>Description:</strong> ${event.description}</p>
-        <button onclick="deleteEvent(${event.id})">Delete</button>
-    `;
-    eventListElement.appendChild(eventElement);
+    article.innerHTML = `
+    <h3><a href="#${event.id}">${event.name} #${event.id}</a></h3>
+    <time datetime="${date}">${date}</time>
+    <address>${event.location}</address>
+    <button class="delete-event-btn" data-event-id="${event.id}">Delete</button>
+  `;
+
+    return article;
 }
 
-// Function to delete an event
-async function deleteEvent(id) {
+document.addEventListener("click", async (event) => {
+    if (event.target.classList.contains("delete-event-btn")) {
+        const eventId = event.target.dataset.eventId;
+        await deleteEvent(eventId);
+    }
+});
+
+async function deleteEvent(eventId) {
     try {
-        await fetch(`${API_URL}/${id}`, {
-            method: 'DELETE',
-        });
-        document.getElementById(`event-${id}`).remove();
+        // Remove the event from state.events based on the eventId
+        state.events = state.events.filter(event => event.id !== parseInt(eventId));
+
+        // Re-render the events list
+        renderEvents();
+
+        console.log('Event deleted successfully.');
     } catch (error) {
         console.error('Error deleting event:', error.message);
     }
 }
 
+function selectEvent() {
+    getEventFromHash();
+    renderEventDetails();
+}
+
+function getEventFromHash() {
+    const id = window.location.hash.slice(1);
+    state.event = state.events.find((event) => event.id === +id);
+}
+
+async function getGuests() {
+    try {
+        const response = await fetch(`${API_URL}/events`);
+        const json = await response.json();
+        state.guests = json.data;
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+function renderGuests() {
+    // Render guests based on state.guests and state.event
+}
+
+async function getRsvps() {
+    try {
+        const response = await fetch(`${API_URL}/rsvps`);
+        const json = await response.json();
+        state.rsvps = json.data;
+    } catch (error) {
+        console.error(error);
+    }
+}
+
 document.addEventListener("DOMContentLoaded", () => {
-    const eventForm = document.getElementById('partyForm'); // Corrected to match the HTML
+    const eventForm = document.getElementById('partyForm');
 
     // Initial render with mock data
-    const mockEvents = [
-        // Mock event data
-    ];
-
+    const mockEvents = [];
     renderEvents(mockEvents);
 
     // Fetch and render real event data
@@ -85,26 +125,25 @@ document.addEventListener("DOMContentLoaded", () => {
         return formattedDate.toISOString();
     }
 
-    // Function to add an event
     async function addEvent(event) {
         event.preventDefault();
 
         const newEvent = {
-            name: document.getElementById('partyName').value, // Corrected to match the HTML
-            date: formatDate(document.getElementById('partyDate').value), // Corrected to match the HTML
-            location: document.getElementById('partyLocation').value, // Corrected to match the HTML
-            description: document.getElementById('partyDescription').value, // Corrected to match the HTML
+            name: document.getElementById('partyName').value,
+            date: formatDate(document.getElementById('partyDate').value),
+            location: document.getElementById('partyLocation').value,
+            description: document.getElementById('partyDescription').value,
         };
 
         try {
-            const response = await fetch(API_URL, {
+            const response = await fetch(`${API_URL}/events`, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json',
+                    "Content-Type": "application/json",
                 },
-                body: JSON.stringify(newEvent),
-            });
-            console.log('Add event response:', response); // Add this line for logging
+                body: JSON.stringify(newEvent)
+            }) 
+            console.log('Add event response:', response);
             if (!response.ok) {
                 throw new Error('Failed to add event');
             }
@@ -116,3 +155,25 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 });
+
+/**
+ * Render details about the currently selected event
+ */
+function renderEventDetails() {
+    if (!state.event) {
+        $eventDetails.innerHTML = "<p>Select an event to see more.</p>";
+        $guests.hidden = true;
+        return;
+    }
+
+    const date = state.event.date ? state.event.date.slice(0, 10) : '';
+
+    $eventDetails.innerHTML = `
+    <h2>${state.event.name} #${state.event.id}</h2>
+    <time datetime="${date}">${date}</time>
+    <address>${state.event.location}</address>
+    <p>${state.event.description}</p>
+  `;
+
+    renderGuests();
+}

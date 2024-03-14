@@ -8,31 +8,46 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
+<body>
+    
 
-    <body>
+    <div class="card" id="partyFormCard">
         <h1>Party Browser Central</h1>
         <form id="partyForm">
             <label for="partyName">Name:</label>
             <input type="text" id="partyName" required />
-        
+
             <label for="partyDate">Date:</label>
             <input type="date" id="partyDate" required />
-        
+
             <label for="partyTime">Time:</label>
             <input type="time" id="partyTime" required />
-        
+
             <label for="partyLocation">Location:</label>
             <input type="text" id="partyLocation" required />
-        
+
             <label for="partyDescription">Description:</label>
             <textarea id="partyDescription" required></textarea>
-        
+
             <button type="submit">Add Party</button>
         </form>
-        <div id="eventList"></div>
-        <div id="partyList" class="party-list"></div>
-    <div id="partyList"></div>
-    
+    </div>
+
+    <h1><a href="#">Event Planner</a></h1>
+    <main>
+        <article id="events">
+            <h2>Upcoming Events</h2>
+            <section id="eventList"></section>
+        </article>
+
+        <h2>Event Details</h2>
+        <article id="event">
+            <article id="eventDetails"></article>
+            <section id="guests">
+            </section>
+        </article>
+    </main>
+  
 
     <script src="script.js" defer></script>
 </body>

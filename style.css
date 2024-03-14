@@ -1,144 +1,626 @@
-h1 {
-    font-family: 'Roboto', sans-serif;
-    font-size: 3em;
-    font-weight: bold;
-    color: #3498db;
-    text-align: center;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-bottom: 20px;
-    
-
-}
-
+/* Apply Roboto font to the entire document */
 body {
-    font-family: Arial, sans-serif;
-    background: radial-gradient(circle, #c1f9ff, #a8edea);
-    margin: 0;
-    padding: 20px;
-    text-align: center;
-}
-
-#partyList {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-.party-box {
-    border: 2px solid black;
-    padding: 15px;
-    margin: 10px;
-    max-width: 300px;
-    background-color: white;
-    border-radius: 10px;
-}
-
-form {
-    margin-top: 20px;
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(to bottom right, #045a12, #00b7ff);
+    /* Gradient background */
     display: flex;
     flex-direction: column;
-    max-width: 400px;
-    margin: 20px auto;
+    /* Stack elements vertically */
+    justify-content: center;
+    /* Center content vertically */
+    align-items: center;
+    /* Center content horizontally */
+    min-height: 100vh;
+    /* Minimum height to cover the viewport */
+    margin: 0;
+    /* Remove default margin */
 }
 
+/* Center align h1 */
+h1 {
+    font-size: 2em;
+    font-weight: bold;
+    color: #003cff;
+    /* White text color */
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 25px;
+    text-align: center;
+    background: linear-gradient(to right, #0019f5, #b806b8);
+    /* Gradient background */
+    display: inline-block;
+    /* Display as inline block to fit content */
+    padding: 10px 20px;
+    /* Padding for space around text */
+    border-radius: 60px;
+    /* Border radius to create circle */
+    box-shadow: 0px 5px 20px rgba(71, 255, 148, 0.5);
+    /* Box shadow */
+}
+
+/* Style for the Event Planner link */
+h1 a {
+    color: #000f09;
+    /* Dark gray text color */
+    text-decoration: none;
+    /* Remove underline */
+    padding: 10px 20px;
+    /* Add padding */
+    border: 2px groove #0057f8;
+    /* Black border */
+    border-radius: 300px;
+    /* Rounded corners */
+    background: linear-gradient(to right, #d110d1, #211ebe);
+    /* Gradient background */
+}
+
+/* Center align form labels */
 form label {
-    margin-bottom: 10px;
-}
-
-form input,
-form textarea {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 15px;
-}
-
-form button {
-    background-color: #4caf50;
-    color: white;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-form button:hover {
-    background-color: #45a049;
-}
-#partyForm {
-    max-width: 400px;
-    margin: 20px auto;
-    padding: 20px;
-    border: 2px solid #3498db;
-    border-radius: 10px;
-    background-color: #f9f9f9;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-}
-
-#partyForm label {
     display: block;
     margin-bottom: 10px;
-    color: #3498db;
+    text-align: left;
+    /* Align labels to the left */
 }
 
-#partyForm input[type="text"],
-#partyForm input[type="date"],
-#partyForm input[type="time"],
-#partyForm textarea {
-    width: 100%;
+/* Update form margin */
+form {
+    margin-top: 20px;
+    max-width: 400px;
+    margin: 0 auto;
+    /* Center the form horizontally */
+}
+
+/* Increase input and textarea padding */
+form input,
+form textarea {
     padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box;
 }
 
-#partyForm button[type="submit"] {
-    background-color: #3498db;
-    color: white;
+/* Remove redundant styles for form button */
+form button {
+    background-color: #fc0000;
+    color: rgb(111, 1, 255);
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 16px;
-    font-weight: bold;
-    text-transform: uppercase;
 }
 
-#partyForm button[type="submit"]:hover {
-    background-color: #2980b9;
-}
-#eventList {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+/* Hover effect for form button */
+form button:hover {
+    background-color: #d40bd4;
 }
 
+/* Style for h2 */
+h2 {
+    font-family: fantasy;
+    font-size: 1.5em;
+    /* Large font size */
+    color: #8c19eb;
+    /* Dark gray text color */
+    margin-bottom: 10px;
+    /* Add space below heading */
+    text-align: center;
+    /* Center align text */
+}
+
+/* Style for the Event Details heading */
+#eventDetails h2 {
+    font-size: 1.2em;
+    /* Medium font size */
+    color: #cf1212;
+    /* Dark gray text color */
+    margin-bottom: 10px;
+    /* Add space below heading */
+}
+
+/* Style for the Guests heading */
+#guests h3 {
+    font-size: 1.2em;
+    /* Medium font size */
+    color: #333333;
+    /* Dark gray text color */
+    margin-bottom: 10px;
+    /* Add space below heading */
+}
+
+/* Adjust event box styles */
 .event-box {
-    border: 2px solid #3498db;
+    border: 2px solid #1100ff;
     padding: 15px;
     margin: 10px;
     max-width: 300px;
-    background-color: #f9f9f9;
+    background-color: #002fff;
     border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    color: #333;
+    box-shadow: 0px 0px 10px rgb(3, 20, 172);
+    color: #0629f1;
+    text-align: left;
+    /* Align text to the left */
 }
 
-.event-box p {
-    margin: 0;
-    padding-bottom: 10px;
+/* Hover effect for .event-box button */
+.event-box button:hover {
+    background-color: #5700f8;
 }
 
-.event-box button {
-    background-color: #3498db;
+/* Add border and box shadow to #eventPlanner section */
+#eventPlanner {
+    border: 2px solid #000000;
+    /* Border color */
+    border-radius: 20px;
+    /* Border radius */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    /* Box shadow */
+    padding: 20px;
+    /* Padding for space around content */
+    margin-top: 20px;
+    /* Margin top */
+}
+
+/* Wrap upcoming events section around events */
+#upcomingEvents {
+    display: flex;
+    flex-direction: column;
+    /* Stack elements vertically */
+    align-items: center;
+    /* Center content horizontally */
+}
+#partyForm {
+    border: 10px solid #006400;
+    /* Dark green border */
+    border-radius: 20px;
+    /* Border radius */
+    background: linear-gradient(to right, #32CD32, #006400);
+    /* Gradient background */
+    padding: 60px;
+    padding-left: 10px;
+    padding-bottom: 20px;
+    padding-right: 100px;
+    /* Padding for space around content */
+    display: inline-block;
+    /* Display as inline block */
+    margin-top: -15px;
+    margin-left: 85px;
+    /* Margin top */
+    box-sizing: border-box;
+    /* Include padding and border in element's total width and height */
+}
+
+article {
+    border: 2px solid #000000;
+    /* Dark green border */
+    border-radius: 20px;
+    /* Border radius */
+    background: linear-gradient(to right, #328fcd, #028502);
+    /* Gradient background */
+    padding: 20px;
+    /* Padding for space around content */
+    margin-top: 20px;
+    /* Margin top */
+    max-width: 600px;
+    /* Maximum width for better readability */
+    font-family: fantasy;
+}
+
+article .delete-event-btn {
+    background-color: #05af3e;
+    /* Tomato red background color */
     color: white;
-    padding: 8px 15px;
+    /* White text color */
+    padding: 10px 20px;
+    /* Padding for space around text */
     border: none;
+    /* Remove border */
+    border-radius: 20px;
+    /* Border radius to create oval shape */
+    cursor: pointer;
+    /* Cursor style */
+    transition: background-color 0.3s;
+    /* Smooth transition for background color */
+}
+
+/* Hover effect for delete buttons */
+article .delete-event-btn:hover {
+    background-color: #1a3ac7;
+    /* Darker shade of tomato red on hover */
+}
+button[type="submit"] {
+    background-color: #4caf50;
+    /* Green background color */
+    color: white;
+    /* White text color */
+    padding: 10px 20px;
+    /* Padding for space around text */
+    border: none;
+    /* Remove border */
+    border-radius: 20px;
+    /* Border radius to create oval shape */
+    cursor: pointer;
+    /* Cursor style */
+    transition: background-color 0.3s;
+    /* Smooth transition for background color */
+}
+
+/* Hover effect for the button */
+button[type="submit"]:hover {
+    background-color: #45a049;
+    /* Darker shade of green on hover */
+}
+/* Style for the input field */
+#partyName {
+    padding: 10px;
+    /* Padding for space inside the input field */
+    border: 2px solid #4caf50;
+    /* Green border */
+    border-radius: 20px;
+    /* Border radius to create oval shape */
+    transition: border-color 0.3s;
+    /* Smooth transition for border color */
+}
+
+/* Hover effect for the input field */
+#partyName:hover,
+#partyName:focus {
+    border-color: #45a049;
+    /* Darker shade of green on hover/focus */
+}
+/* Style for the label */
+label[for="partyDate"] {
+    display: block;
+    /* Ensure label occupies its own line */
+    margin-bottom: 10px;
+    /* Add space below the label */
+    color: #333;
+    /* Text color */
+}
+
+/* Style for the input field */
+#partyDate {
+    padding: 10px;
+    /* Padding for space inside the input field */
+    border: 2px solid #4caf50;
+    /* Green border */
+    border-radius: 20px;
+    /* Border radius to create oval shape */
+    transition: border-color 0.3s;
+    /* Smooth transition for border color */
+}
+
+/* Hover effect for the input field */
+#partyDate:hover,
+#partyDate:focus {
+    border-color: #45a049;
+    /* Darker shade of green on hover/focus */
+}
+/* Style for the input field */
+#partyTime {
+    padding: 10px;
+    /* Padding for space inside the input field */
+    border: 2px solid #4caf50;
+    /* Green border */
+    border-radius: 20px;
+    /* Border radius to create oval shape */
+    transition: border-color 0.3s;
+    /* Smooth transition for border color */
+}
+
+/* Hover effect for the input field */
+#partyTime:hover,
+#partyTime:focus {
+    border-color: #45a049;
+    /* Darker shade of green on hover/focus */
+}
+/* Style for the label */
+label[for="partyLocation"] {
+    display: block;
+    /* Ensure label occupies its own line */
+    margin-bottom: 10px;
+    /* Add space below the label */
+    color: #333;
+    /* Text color */
+}
+
+/* Style for the input field */
+#partyLocation {
+    padding: 10px;
+    /* Padding for space inside the input field */
+    border: 2px solid #4caf50;
+    /* Green border */
+    border-radius: 20px;
+    /* Border radius to create oval shape */
+    transition: border-color 0.3s;
+    /* Smooth transition for border color */
+}
+
+/* Hover effect for the input field */
+#partyLocation:hover,
+#partyLocation:focus {
+    border-color: #45a049;
+    /* Darker shade of green on hover/focus */
+}
+
+/* Style for the textarea */
+#partyDescription {
+    padding: 10px;
+    /* Padding for space inside the textarea */
+    border: 2px solid #4caf50;
+    /* Green border */
+    border-radius: 20px;
+    /* Border radius to create oval shape */
+    transition: border-color 0.3s;
+    /* Smooth transition for border color */
+}
+
+/* Hover effect for the textarea */
+#partyDescription:hover,
+#partyDescription:focus {
+    border-color: #45a049;
+    /* Darker shade of green on hover/focus */
+}
+
+/* Style for the label */
+label[for="partyName"] {
+    display: block;
+    /* Ensure label occupies its own line */
+    margin-bottom: 10px;
+    /* Add space below the label */
+    color: #333;
+    /* Text color */
+    font-family: 'Your Fantasy Font', fantasy;
+    /* Apply fantasy font */
+}
+
+/* Style for the input field */
+#partyName {
+    padding: 10px;
+    /* Padding for space inside the input field */
+    border: 2px solid #4caf50;
+    /* Green border */
+    border-radius: 20px;
+    /* Border radius to create oval shape */
+    transition: border-color 0.3s;
+    /* Smooth transition for border color */
+}
+
+/* Hover effect for the input field */
+#partyName:hover,
+#partyName:focus {
+    border-color: #45a049;
+    /* Darker shade of green on hover/focus */
+}
+
+/* Style for the label */
+label[for="partyDate"] {
+    display: block;
+    /* Ensure label occupies its own line */
+    margin-bottom: 10px;
+    /* Add space below the label */
+    color: #333;
+    /* Text color */
+    font-family: 'Your Fantasy Font', fantasy;
+    /* Apply fantasy font */
+}
+
+/* Style for the input field */
+#partyDate {
+    padding: 10px;
+    /* Padding for space inside the input field */
+    border: 2px solid #4caf50;
+    /* Green border */
+    border-radius: 20px;
+    /* Border radius to create oval shape */
+    transition: border-color 0.3s;
+    /* Smooth transition for border color */
+}
+
+/* Hover effect for the input field */
+#partyDate:hover,
+#partyDate:focus {
+    border-color: #45a049;
+    /* Darker shade of green on hover/focus */
+}
+
+/* Style for the label */
+label[for="partyTime"] {
+    display: block;
+    /* Ensure label occupies its own line */
+    margin-bottom: 10px;
+    /* Add space below the label */
+    color: #333;
+    /* Text color */
+    font-family: 'Your Fantasy Font', fantasy;
+    /* Apply fantasy font */
+}
+
+/* Style for the input field */
+#partyTime {
+    padding: 10px;
+    /* Padding for space inside the input field */
+    border: 2px solid #4caf50;
+    /* Green border */
+    border-radius: 20px;
+    /* Border radius to create oval shape */
+    transition: border-color 0.3s;
+    /* Smooth transition for border color */
+}
+
+/* Hover effect for the input field */
+#partyTime:hover,
+#partyTime:focus {
+    border-color: #45a049;
+    /* Darker shade of green on hover/focus */
+}
+
+/* Style for the label */
+label[for="partyLocation"] {
+    display: block;
+    /* Ensure label occupies its own line */
+    margin-bottom: 10px;
+    /* Add space below the label */
+    color: #333;
+    /* Text color */
+    font-family: 'Your Fantasy Font', fantasy;
+    /* Apply fantasy font */
+}
+
+/* Style for the input field */
+#partyLocation {
+    padding: 10px;
+    /* Padding for space inside the input field */
+    border: 2px solid #4caf50;
+    /* Green border */
+    border-radius: 20px;
+    /* Border radius to create oval shape */
+    transition: border-color 0.3s;
+    /* Smooth transition for border color */
+}
+
+/* Hover effect for the input field */
+#partyLocation:hover,
+#partyLocation:focus {
+    border-color: #45a049;
+    /* Darker shade of green on hover/focus */
+}
+
+/* Style for the label */
+label[for="partyDescription"] {
+    display: block;
+    /* Ensure label occupies its own line */
+    margin-bottom: 10px;
+    /* Add space below the label */
+    color: #333;
+    /* Text color */
+    font-family: 'Your Fantasy Font', fantasy;
+    /* Apply fantasy font */
+}
+
+/* Style for the textarea */
+#partyDescription {
+    padding: 10px;
+    /* Padding for space inside the textarea */
+    border: 2px solid #4caf50;
+    /* Green border */
+    border-radius: 20px;
+    /* Border radius to create oval shape */
+    transition: border-color 0.3s;
+    /* Smooth transition for border color */
+}
+
+/* Hover effect for the textarea */
+#partyDescription:hover,
+#partyDescription:focus {
+    border-color: #45a049;
+    /* Darker shade of green on hover/focus */
+}
+
+.card {
+    width: 100%;
+    max-width: 550px;
+    margin: 0 auto;
+    position: relative;
+    background: url('nightlife.jpg') center/cover;
+    overflow: hidden;
+    border-radius: 50px;
+}
+
+.card h1 {
+    color: rgb(251, 255, 3);
+    text-align: center;
+}
+
+.card form {
+    z-index: 1;
+    position: relative;
+    background: rgba(224, 248, 10, 0.7);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.card form label,
+.card form input,
+.card form textarea,
+.card form button {
+    display: block;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.card form button {
+    background-color: #04ff04;
+    color: rgb(0, 12, 22);
+    border: none;
+    padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
 }
 
-.event-box button:hover {
-    background-color: #2980b9;
+.card form button:hover {
+    background-color: #0099ff;
 }
+
+.card::before {
+    content: '';
+    position: absolute;
+    width: 200px;
+    background-image: linear-gradient(180deg, rgb(255, 0, 200), rgb(3, 240, 42));
+    height: 300%;
+    animation: rotBGimg 3s linear infinite;
+    transition: all 0.2s linear;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    /* Push behind the content */
+}
+
+@keyframes rotBGimg {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.card::after {
+    content: '';
+    position: absolute;
+    background: #001f02;
+    inset: 5px;
+    border-radius: 1px;
+    z-index: -1;
+    margin-bottom: -100px;
+    /* Push behind the content */
+}
+
+.cube-container {
+    width: 200px;
+    height: 200px;
+    perspective: 800px;
+    margin: 50px auto;
+}
+
+.cube {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    animation: rotate 8s infinite linear;
+}
+
+.face {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    color: rgb(214, 21, 21);
+    font-size: 18px;
+    text-align: center;
+    line-height: 200px;
+    background: transparent;
+    opacity: 0.9;
+    border: 2px solid;
+    border-image: linear-gradient(to right, #ff6b6b, #355c7d, #557d35, #cfcf16, #a51f1f) 1;
+    box-shadow: 0 0 100px rgba(245, 8, 8, 0.8);
+}
+
+
